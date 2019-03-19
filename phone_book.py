@@ -34,6 +34,7 @@ class TestCase(unittest.TestCase):
         phone_book = [119, 97674223, 1195524421]
         result = solution(phone_book)
         self.assertEqual(result, False)
+        
     def test_2(self):
         phone_book = [123,456,789]
         result = solution(phone_book)
@@ -45,6 +46,12 @@ class TestCase(unittest.TestCase):
         self.assertEqual(result, False)
 
 def solution(phone_book):
+    for i in phone_book:  
+        for j in phone_book:
+            if i == j:
+                continue
+            if str(j).find(str(i)) == 0:
+                return False
     return True
 
 unittest.main()
