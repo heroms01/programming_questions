@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 
 class UnfinishedMaraton {
-
+    // 시간초과
     public String solution(String[] participant, String[] completion) {
         List<String> listParticipant = new ArrayList<>(Arrays.asList(participant));
         List<String> listCompletion = new ArrayList<>(Arrays.asList(completion));
