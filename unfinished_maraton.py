@@ -26,6 +26,7 @@ vinko는 참여자 명단에는 있지만, 완주자 명단에는 없기 때문�
 예제 #3
 mislav는 참여자 명단에는 두 명이 있지만, 완주자 명단에는 한 명밖에 없기 때문에 한명은 완주하지 못했습니다.
 """
+from collections import defaultdict
 import unittest
   
 class TestCase(unittest.TestCase):
@@ -39,10 +40,33 @@ class TestCase(unittest.TestCase):
     c=['eden', 'kiki']
     self.assertEqual(solution(p,c), 'kiki')
 
-def solution(participant, completion):
+#시간 초과
+def solution1(participant, completion):
   for c in completion:
     participant.remove(c)
       
   return participant[0]
   
+
+def solution(pl, cl):
+	phash = defaultdict(int)
+	for p in pl:	
+		phash[p] += 1
+		
+	for c in cl:
+		if c in phash:
+			phash[c] -= 1
+			if phash[c] == 0:
+				del phash[c]
+				
+	result = ''
+	for k in phash:
+		result = k
+		
+	return result
+  
 unittest.main()
+
+
+
+
